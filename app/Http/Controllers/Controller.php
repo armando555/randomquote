@@ -32,6 +32,6 @@ class Controller extends BaseController
 
         $randomQuote = Controller::$quotes[$randomNumber];
 
-        return response()->json(['quote' => $randomQuote]);
+        return response()->json(['quote' => $randomQuote, 'server_ip' => gethostbyname(gethostname())]);
     }
 }
