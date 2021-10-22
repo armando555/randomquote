@@ -21,6 +21,37 @@ class Controller extends BaseController
         "Be the change that you wish to see in the world - Mahatma Gandhi",
 
     );
+    public static $images = array(
+        "https://storage.googleapis.com/ariosg-bucket-images/1.jpg",
+
+        "https://storage.googleapis.com/ariosg-bucket-images/2.jpg",
+
+        "https://storage.googleapis.com/ariosg-bucket-images/3.jpg",
+
+        "https://storage.googleapis.com/ariosg-bucket-images/4.jpg",
+
+        "https://storage.googleapis.com/ariosg-bucket-images/5.jpg",
+
+        "https://storage.googleapis.com/ariosg-bucket-images/6.jpg",
+
+        "https://storage.googleapis.com/ariosg-bucket-images/7.jpg",
+
+        "https://storage.googleapis.com/ariosg-bucket-images/8.jpg",
+
+        "https://storage.googleapis.com/ariosg-bucket-images/9.jpg",
+
+        "https://storage.googleapis.com/ariosg-bucket-images/10.jpg",
+
+        "https://storage.googleapis.com/ariosg-bucket-images/11.jpg",
+
+        "https://storage.googleapis.com/ariosg-bucket-images/12.jpg",
+
+        "https://storage.googleapis.com/ariosg-bucket-images/13.jpg",
+
+        "https://storage.googleapis.com/ariosg-bucket-images/14.jpg",
+
+        "https://storage.googleapis.com/ariosg-bucket-images/15.jpg"
+    );
 
     public function index()
 
@@ -33,5 +64,12 @@ class Controller extends BaseController
         $randomQuote = Controller::$quotes[$randomNumber];
 
         return response()->json(['quote' => $randomQuote, 'server_ip' => gethostbyname(gethostname())]);
+    }
+
+    public function images(){
+        $totalImages = (count(Controller::$images));
+        $randomNumber = (rand(0,($totalImages-1)));
+        $randomImage = Controller::$images[$randomNumber];
+        return response("echo \"<img src=\"".$randomImage."\" alt=\"\">\"\nserver_ip=>".gethostbyname(gethostname()));
     }
 }
